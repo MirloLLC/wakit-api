@@ -54,6 +54,16 @@ Deno.serve(async (req) => {
       return json({ status: "ok", timestamp: new Date().toISOString(), db: count !== null ? "connected" : "error" });
     }
 
+    // GET /api/config — public plugin config (no auth required)
+    if (path === "config") {
+      return json({
+        plugins: {
+          stripe: !!Deno.env.get("STRIPE_SECRET_KEY"),
+          "migrate-twilio": true,
+        },
+      });
+    }
+
     const { supabase, orgId } = await authenticate(req);
     const method = req.method;
     const body = method !== "GET" ? await req.json().catch(() => ({})) : {};
