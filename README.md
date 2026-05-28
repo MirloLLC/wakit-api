@@ -494,6 +494,10 @@ wakit provides public endpoints for monitoring (no authentication required):
 
 Use `/api/ping` with uptime monitoring tools (Upptime, Better Uptime, etc.) to track availability.
 
+## Runbooks
+
+- [External webhook subscriber runbook](docs/EXTERNAL-SUBSCRIBER-RUNBOOK.md) — wire an external system to own conversation logic on top of Wakit's webhook + pause-trigger primitives.
+
 ## Configuration
 
 ### Organizations
